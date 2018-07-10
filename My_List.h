@@ -97,9 +97,16 @@ public:
 				RemoveAt(i);
 		}
 	}
-	T IndexOf(const size_t &index) {
-		if(index<_size)
+	T At(const size_t &index) {
+		if (index < _size)
 			return arr[index];
 		return nullptr;
+	}
+	size_t IndexOf(const T &item) {
+		for (size_t i = 0; i < _size; i++) {
+			if (arr[i] == item)
+				return i;
+		}
+		return -1;
 	}
 };
