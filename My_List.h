@@ -16,6 +16,9 @@ private:
 		delete[] arr_cp;
 	}
 public:
+	~my_List() {
+		delete[]arr;
+	}
 	T& operator[](const size_t &index) {
 		if (index < _size) {
 			return arr[index];
