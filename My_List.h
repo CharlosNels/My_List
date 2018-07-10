@@ -1,10 +1,11 @@
 #pragma once
+#define _DEFAULT_SIZE_ 4
 template<typename T>
 class my_List{
 private:
 	size_t _size = 0;
-	size_t old_size = 4;
-	T *arr = new T[4];
+	size_t old_size = _DEFAULT_SIZE_;
+	T *arr = new T[_DEFAULT_SIZE_];
 	void Expand() {
 		old_size = old_size * 3 / 2 + 1;
 		T *arr_cp = arr;
