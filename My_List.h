@@ -1,12 +1,16 @@
 #pragma once
 #define _DEFAULT_SIZE_ 4
-template<typename T>
+/**********************
+author:CharlosNels
+don't delete this annotation
+**********************/
+template<typename T>		//define template T
 class my_List{
 private:
-	size_t _size = 0;
-	size_t old_size = _DEFAULT_SIZE_;
-	T *arr = new T[_DEFAULT_SIZE_];
-	void Expand() {
+	size_t _size = 0;			//size(length)
+	size_t old_size = _DEFAULT_SIZE_;		//actually size
+	T *arr = new T[_DEFAULT_SIZE_];			//Data
+	void Expand() {			//Expand Data if size is not enough
 		old_size = old_size * 3 / 2 + 1;
 		T *arr_cp = arr;
 		arr = new T[old_size];
@@ -16,7 +20,7 @@ private:
 		delete[] arr_cp;
 	}
 public:
-	~my_List() {
+	~my_List() {		//Destructor
 		delete[]arr;
 	}
 	T& operator[](const size_t &index) {
