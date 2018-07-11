@@ -36,6 +36,12 @@ public:
 			arr[index] = value;
 		}
 	}
+	inline T* List_begin(){
+		return arr;
+	}
+	inline T* List_end(){
+		return arr+_size;
+	}
 	bool Contains(const T &item) {
 		for (size_t i = 0; i < _size; i++) {
 			if (arr[i] == item)
