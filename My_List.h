@@ -83,9 +83,9 @@ public:
 	}
 	void Clear() {
 		_size = 0;
-		old_size = 4;
+		old_size = _DEFAULT_SIZE_;
 		delete[] arr;
-		arr = new T[old_size];
+		arr = new T[_DEFAULT_SIZE_];
 	}
 	void RemoveAt(const size_t &index) {
 		if (index < _size) {
