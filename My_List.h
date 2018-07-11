@@ -24,9 +24,7 @@ public:
 		delete[]arr;
 	}
 	inline T& operator[](const size_t &index) {
-		if (index < _size) {
-			return arr[index];
-		}
+		return index<_size?arr[index]:nullptr;
 	}
 	void operator+(const T &value) {
 		Add(value);
@@ -112,9 +110,7 @@ public:
 		}
 	}
 	inline T At(const size_t &index) {
-		if (index < _size)
-			return arr[index];
-		return nullptr;
+		return index<_size?arr[index]:nullptr;
 	}
 	size_t IndexOf(const T &item) {
 		for (size_t i = 0; i < _size; i++) {
