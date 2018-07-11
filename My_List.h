@@ -23,7 +23,7 @@ public:
 	~my_List() {		//Destructor
 		delete[]arr;
 	}
-	T& operator[](const size_t &index) {
+	inline T& operator[](const size_t &index) {
 		if (index < _size) {
 			return arr[index];
 		}
@@ -59,7 +59,7 @@ public:
 			Expand();
 		}
 	}
-	size_t Size() {
+	inline size_t Size() {
 		return _size;
 	}
 	T* ToArray() {
@@ -105,7 +105,7 @@ public:
 				RemoveAt(i);
 		}
 	}
-	T At(const size_t &index) {
+	inline T At(const size_t &index) {
 		if (index < _size)
 			return arr[index];
 		return nullptr;
