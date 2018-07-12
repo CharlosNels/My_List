@@ -24,7 +24,8 @@ public:
 		delete[]arr;
 	}
 	inline T& operator[](const size_t &index) {
-		return index<_size?arr[index]:nullptr;
+		if(index<_size)
+			return arr[index];
 	}
 	void operator+(const T &value) {
 		Add(value);
@@ -34,10 +35,10 @@ public:
 			arr[index] = value;
 		}
 	}
-	inline T* List_begin(){
+	inline T* begin(){
 		return arr;
 	}
-	inline T* List_end(){
+	inline T* end(){
 		return arr+_size;
 	}
 	bool Contains(const T &item) {
