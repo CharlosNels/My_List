@@ -73,7 +73,6 @@ public:
 	}
 	void RemoveAt(const size_t &index) {
 		if (index < _size) {
-			bool _find = false;
 			Node<T> *tmp = _head;
 			if (index == _size - 1) {
 				while (tmp!=nullptr)
@@ -90,10 +89,7 @@ public:
 			}
 			else {
 				for (size_t i = 0; i < _size; i++) {
-					if (i == index) {
-						_find = true;
-					}
-					if (_find) {
+					if (i>=index) {
 						if (tmp->p_next != nullptr) {
 							tmp->Value = tmp->p_next->Value;
 							if (tmp->p_next->p_next == nullptr) {
