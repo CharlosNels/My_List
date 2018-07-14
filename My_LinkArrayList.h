@@ -101,6 +101,8 @@ public:
 				tmp = tmp->p_next;
 				delete tmp_1;
 			}
+			_head=nullptr;
+			_end=_head;
 		}
 	}
 	T At(const size_t &index) {
