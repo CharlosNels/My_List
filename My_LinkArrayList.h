@@ -1,5 +1,9 @@
 #pragma once
 #define _EXPAND_SIZE_ 10
+/**********************
+author:CharlosNels
+don't delete this annotation
+**********************/
 template<typename T>
 struct ArrayNode
 {
