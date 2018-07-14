@@ -35,13 +35,13 @@ public:
 			arr[index] = value;
 		}
 	}
-	inline T* begin(){
+	inline T* begin() const {
 		return arr;
 	}
-	inline T* end(){
+	inline T* end() const {
 		return arr+_size;
 	}
-	bool Contains(const T &item) {
+	bool Contains(const T &item) const {
 		for (size_t i = 0; i < _size; i++) {
 			if (arr[i] == item)
 				return true;
@@ -64,10 +64,10 @@ public:
 			Expand();
 		}
 	}
-	inline const size_t &Size() {
+	inline const size_t &Size() const{
 		return _size;
 	}
-	T* ToArray() {
+	T* ToArray() const {
 		T* arr_cp = new T[_size];
 		for (size_t i = 0; i < _size; i++) {
 			arr_cp[i] = arr[i];
@@ -110,10 +110,10 @@ public:
 				RemoveAt(i);
 		}
 	}
-	inline T At(const size_t &index) {
+	inline T At(const size_t &index) const{
 		return index<_size?arr[index]:nullptr;
 	}
-	size_t IndexOf(const T &item) {
+	size_t IndexOf(const T &item) const {
 		for (size_t i = 0; i < _size; i++) {
 			if (arr[i] == item)
 				return i;

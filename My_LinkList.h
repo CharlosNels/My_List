@@ -62,7 +62,7 @@ public:
 			}
 		}
 	}
-	T* ToArray() {
+	T* ToArray() const {
 		T* arr = new T[_size];
 		Node<T> *tmp = _head;
 		for (size_t i = 0; i < _size; i++) {
@@ -106,7 +106,7 @@ public:
 			}
 		}
 	}
-	inline const size_t &Size() {
+	inline const size_t &Size() const {
 		return _size;
 	}
 	void Clear() {
@@ -121,7 +121,7 @@ public:
 		_end = nullptr;
 		_size = 0;
 	}
-	T At(const size_t &index) {
+	T At(const size_t &index) const {
 		Node<T> *tmp = _head;
 		for (size_t i = 0; i < _size; i++) {
 			if (i == index)
@@ -129,7 +129,7 @@ public:
 			tmp = tmp->p_next;
 		}
 	}
-	size_t IndexOf(const T &item) {
+	size_t IndexOf(const T &item) const {
 		Node<T> *tmp = _head;
 		for (size_t i = 0; i < _size; i++) {
 			if (tmp->Value == item)

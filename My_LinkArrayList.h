@@ -43,7 +43,7 @@ public:
 			}
 		}
 	}
-	T *ToArray() {
+	T *ToArray() const {
 		T *arr = new T[_size];
 		ArrayNode<T> *tmp = _head;
 		for (size_t i = 0; i < _max_size / _EXPAND_SIZE_; i++) {
@@ -105,7 +105,7 @@ public:
 			_end=_head;
 		}
 	}
-	T At(const size_t &index) {
+	T At(const size_t &index) const {
 		if (index < _size) {
 			size_t num = index / _EXPAND_SIZE_;
 			ArrayNode<T> *tmp = _head;
@@ -117,7 +117,7 @@ public:
 			}
 		}
 	}
-	inline const size_t &Size() {
+	inline const size_t &Size() const {
 		return _size;
 	}
 };
