@@ -71,6 +71,28 @@ public:
 		}
 		return arr;
 	}
+	void Insert(const size_t &index,const T &_val){
+		if(index<=_size){
+			Node<T> *tmp=new Node<T>();
+			tmp->Value=_val;
+			if(index==0){
+				tmp->p_next=_head;
+				_head=tmp;
+			}
+			else if(index==_size){
+				_end->p_next=tmp;
+				_end=tmp;
+			}
+			else{
+				Node<T> *tmp_1 = _head;
+				for(size_t i=0;i<index-1;i++){
+					tmp_1=tmp_1->p_next;
+				}
+				tmp->p_next=tmp_1->p_next;
+				tmp_1->p_next=tmp;
+			}
+		}
+	}
 	void RemoveAt(const size_t &index) {
 		if (index < _size) {
 			Node<T> *tmp = _head;
@@ -87,19 +109,18 @@ public:
 					tmp = tmp->p_next;
 				}
 			}
+			else if(index==0){
+				_head=_head->p_next;
+				delete tmp;
+			}
 			else {
 				for (size_t i = 0; i < _size; i++) {
-					if (i>=index) {
-						if (tmp->p_next != nullptr) {
-							tmp->Value = tmp->p_next->Value;
-							if (tmp->p_next->p_next == nullptr) {
-								delete tmp->p_next;
-								tmp->p_next = nullptr;
-								_end = tmp;
-								_size--;
-								break;
-							}
-						}
+					if (i==index-1) {
+						Node<T> *tmp_1=tmp->p_next;
+						tmp->p_next=tmp->p_next->p_next;
+						delete tmp_1;
+						_size--;
+						break;
 					}
 					tmp = tmp->p_next;
 				}
