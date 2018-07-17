@@ -1,6 +1,6 @@
 #pragma once
 #define _EXPAND_SIZE_ 10		//change _EXPAND_SIZE_ value to improve the efficiency ,
-/**********************				for example,when length of data is about 1000000,the appropriate value is 10000
+/**********************				for example,when length of data is about 1000000,the appropriate value is 1000
 author:CharlosNels				
 don't delete this annotation
 **********************/
