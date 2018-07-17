@@ -1,7 +1,7 @@
 #pragma once
-#define _EXPAND_SIZE_ 10
-/**********************
-author:CharlosNels
+#define _EXPAND_SIZE_ 10		//change _EXPAND_SIZE_ value to improve the rate ,
+/**********************				for example,when length of data is about 1000000,the appropriate value is 10000
+author:CharlosNels				
 don't delete this annotation
 **********************/
 template<typename T>
