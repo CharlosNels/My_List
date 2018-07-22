@@ -1,6 +1,6 @@
 #pragma once
-#define _EXPAND_SIZE_ 10		//change _EXPAND_SIZE_ value to improve the rate ,
-/**********************				for example,when length of data is about 1000000,the appropriate value is 10000
+#define _EXPAND_SIZE_ 10		//change _EXPAND_SIZE_ value to improve the efficiency ,
+/**********************				for example,when length of data is about 1000000,the appropriate value is 1000
 author:CharlosNels				
 don't delete this annotation
 **********************/
@@ -54,7 +54,7 @@ public:
 		}
 		return arr;
 	}
-	void Set(const size_t &index, const T&_val) {
+	void Set(const size_t &index, const T &_val) {
 		if (index < _size) {
 			size_t num = index / _EXPAND_SIZE_;
 			ArrayNode<T> *tmp = _head;
@@ -101,6 +101,8 @@ public:
 				tmp = tmp->p_next;
 				delete tmp_1;
 			}
+			_size=0;
+			_max_size=0;
 			_head=nullptr;
 			_end=_head;
 		}
