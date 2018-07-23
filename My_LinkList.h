@@ -6,14 +6,14 @@ don't delete this annotation
 template<typename T>
 struct Node {
 	T Value;
-	Node<T> *p_next=nullptr;
+	Node<T> *p_next = nullptr;
 };
 template<typename T>
 class my_LinkList {
 private:
-	Node<T> *_head = nullptr;
-	Node<T> *_end = nullptr;
-	size_t _size = 0;
+	Node<T> *_head;
+	Node<T> *_end;
+	size_t _size;
 public:
 	~my_LinkList() {
 		Node<T> *tmp = _head;
@@ -22,6 +22,33 @@ public:
 			tmp_1 = tmp;
 			tmp = tmp->p_next;
 			delete tmp_1;
+		}
+	}
+	my_LinkList() :_head(nullptr), _end(nullptr), _size(0) {}
+	explicit my_LinkList(const size_t &def_siz) : _head(new Node<T>()), _size(def_siz) {
+		Node<T> *tmp = _head;
+		for (size_t i = 0; i < def_siz; i++) {
+			tmp->Value = T();
+			if (i == def_siz - 1) {
+				_end = tmp;
+			}
+			else {
+				tmp->p_next = new Node<T>();
+				tmp = tmp->p_next;
+			}
+		}
+	}
+	my_LinkList(std::initializer_list<T> il) : _head(new Node<T>()), _size(il.size()) {
+		Node<T> *tmp = _head;
+		for (auto beg = il.begin(); beg != il.end(); beg++) {
+			tmp->Value = *beg;
+			if (beg == il.end() - 1) {
+				_end = tmp;
+			}
+			else {
+				tmp->p_next = new Node<T>();
+				tmp = tmp->p_next;
+			}
 		}
 	}
 	T &operator[](const size_t &index) {
@@ -50,7 +77,7 @@ public:
 		}
 		_size++;
 	}
-	void Set(const size_t &index,const T &_val) {
+	void Set(const size_t &index, const T &_val) {
 		if (index < _size) {
 			Node<T> *tmp = _head;
 			for (size_t i = 0; i < _size; i++) {
@@ -71,25 +98,25 @@ public:
 		}
 		return arr;
 	}
-	void Insert(const size_t &index,const T &_val){
-		if(index<=_size){
-			Node<T> *tmp=new Node<T>();
-			tmp->Value=_val;
-			if(index==0){
-				tmp->p_next=_head;
-				_head=tmp;
+	void Insert(const size_t &index, const T &_val) {
+		if (index <= _size) {
+			Node<T> *tmp = new Node<T>();
+			tmp->Value = _val;
+			if (index == 0) {
+				tmp->p_next = _head;
+				_head = tmp;
 			}
-			else if(index==_size){
-				_end->p_next=tmp;
-				_end=tmp;
+			else if (index == _size) {
+				_end->p_next = tmp;
+				_end = tmp;
 			}
-			else{
+			else {
 				Node<T> *tmp_1 = _head;
-				for(size_t i=0;i<index-1;i++){
-					tmp_1=tmp_1->p_next;
+				for (size_t i = 0; i < index - 1; i++) {
+					tmp_1 = tmp_1->p_next;
 				}
-				tmp->p_next=tmp_1->p_next;
-				tmp_1->p_next=tmp;
+				tmp->p_next = tmp_1->p_next;
+				tmp_1->p_next = tmp;
 			}
 		}
 	}
@@ -97,7 +124,7 @@ public:
 		if (index < _size) {
 			Node<T> *tmp = _head;
 			if (index == _size - 1) {
-				while (tmp!=nullptr)
+				while (tmp != nullptr)
 				{
 					if (tmp->p_next->p_next == nullptr) {
 						delete tmp->p_next;
@@ -109,15 +136,15 @@ public:
 					tmp = tmp->p_next;
 				}
 			}
-			else if(index==0){
-				_head=_head->p_next;
+			else if (index == 0) {
+				_head = _head->p_next;
 				delete tmp;
 			}
 			else {
 				for (size_t i = 0; i < _size; i++) {
-					if (i==index-1) {
-						Node<T> *tmp_1=tmp->p_next;
-						tmp->p_next=tmp->p_next->p_next;
+					if (i == index - 1) {
+						Node<T> *tmp_1 = tmp->p_next;
+						tmp->p_next = tmp->p_next->p_next;
 						delete tmp_1;
 						_size--;
 						break;

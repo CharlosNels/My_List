@@ -1,22 +1,22 @@
 #pragma once
 #define _EXPAND_SIZE_ 10		//change _EXPAND_SIZE_ value to improve the efficiency ,
 /**********************				for example,when length of data is about 1000000,the appropriate value is 1000
-author:CharlosNels				
+author:CharlosNels
 don't delete this annotation
 **********************/
 template<typename T>
 struct ArrayNode
 {
-	T *Data=nullptr;
+	T *Data = nullptr;
 	ArrayNode<T> *p_next = nullptr;
 };
 template<typename T>
 class my_LinkArrayList {
 private:
-	ArrayNode<T> *_head=nullptr;
-	ArrayNode<T> *_end=nullptr;
-	size_t _max_size = 0;
-	size_t _size = 0;
+	ArrayNode<T> *_head;
+	ArrayNode<T> *_end;
+	size_t _max_size;
+	size_t _size;
 public:
 	~my_LinkArrayList() {
 		ArrayNode<T> *tmp = _head;
@@ -28,6 +28,7 @@ public:
 			delete tmp_1;
 		}
 	}
+	my_LinkArrayList() :_head(nullptr), _end(nullptr), _max_size(0), _size(0) {}
 	void operator+(const T &_val) {
 		Add(_val);
 	}
@@ -48,7 +49,7 @@ public:
 		ArrayNode<T> *tmp = _head;
 		for (size_t i = 0; i < _max_size / _EXPAND_SIZE_; i++) {
 			for (size_t j = 0; j < _EXPAND_SIZE_; j++) {
-				arr[i*_EXPAND_SIZE_+j] = tmp->Data[j];
+				arr[i*_EXPAND_SIZE_ + j] = tmp->Data[j];
 			}
 			tmp = tmp->p_next;
 		}
@@ -101,10 +102,10 @@ public:
 				tmp = tmp->p_next;
 				delete tmp_1;
 			}
-			_size=0;
-			_max_size=0;
-			_head=nullptr;
-			_end=_head;
+			_size = 0;
+			_max_size = 0;
+			_head = nullptr;
+			_end = _head;
 		}
 	}
 	T At(const size_t &index) const {
