@@ -24,7 +24,7 @@ public:
 		delete[]arr;
 	}
 	my_ArrayList() : arr(new T[_DEFAULT_SIZE_]), old_size(_DEFAULT_SIZE_), _size(0) {}
-	explicit my_ArrayList(const size_t &def_siz) :old_size(def_siz * 3 / 2 + 1), arr(new T[old_size]), _size(def_siz) {
+	explicit my_ArrayList(const size_t &def_siz) :old_size(def_siz * 3 / 2 + 1), _size(0) {
 		for (size_t i = 0; i < _size; i++) {
 			arr[i] = T();
 		}
