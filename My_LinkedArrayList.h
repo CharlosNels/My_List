@@ -1,6 +1,5 @@
-#pragma once
-#define _EXPAND_SIZE_ 10		//change _EXPAND_SIZE_ value to improve the efficiency ,
-/**********************				for example,when length of data is about 1000000,the appropriate value is 1000
+﻿#pragma once
+/**********************				
 author:CharlosNels
 don't delete this annotation
 **********************/
@@ -9,8 +8,11 @@ struct ArrayNode
 {
 	T *Data = nullptr;
 	ArrayNode<T> *p_next = nullptr;
+	~ArrayNode() {
+		delete[] Data;
+	}
 };
-template<typename T>
+template<typename T, std::size_t _EXPAND_SIZE_ = 10>
 class my_LinkArrayList {
 private:
 	ArrayNode<T> *_head;
@@ -23,7 +25,6 @@ public:
 		ArrayNode<T> *tmp_1 = _head;
 		while (tmp != nullptr) {
 			tmp_1 = tmp;
-			delete[]tmp_1->Data;
 			tmp = tmp->p_next;
 			delete tmp_1;
 		}
