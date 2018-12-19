@@ -1,10 +1,9 @@
 #pragma once
-#define _DEFAULT_SIZE_ 4
 /**********************
 author:CharlosNels
 don't delete this annotation
 **********************/
-template<typename T>		//define template T
+template<typename T,int _DEFAULT_SIZE_=4>		//define template T
 class my_ArrayList {
 private:
 	size_t _size;			//size(length)
