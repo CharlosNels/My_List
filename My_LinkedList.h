@@ -1,8 +1,4 @@
 ﻿#pragma once
-/**********************
-author:CharlosNels
-don't delete this annotation
-**********************/
 template<typename T>
 struct Node {
 	T Value;
