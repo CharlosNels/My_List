@@ -1,8 +1,4 @@
 #pragma once
-/**********************
-author:CharlosNels
-don't delete this annotation
-**********************/
 template<typename T,int _DEFAULT_SIZE_=4>		//define template T
 class my_ArrayList {
 private:
