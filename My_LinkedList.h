@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /**********************
 author:CharlosNels
 don't delete this annotation
@@ -6,7 +6,8 @@ don't delete this annotation
 template<typename T>
 struct Node {
 	T Value;
-	Node<T> *p_next = nullptr;
+	Node<T> *p_next;
+	Node(const T &val = T(), Node<T> *p = nullptr) :Value(val), p_next(p) {}
 };
 template<typename T>
 class my_LinkList {
@@ -176,6 +177,18 @@ public:
 				return tmp->Value;
 			tmp = tmp->p_next;
 		}
+	}
+	void Reverse() {
+		Node<T> *p = 0;
+		Node<T> *tmp_head = _head;
+		while (tmp_head) {
+			Node<T> *q = tmp_head;
+			tmp_head = q->p_next;
+			q->p_next = p;
+			p = q;
+		}
+		_end = _head;
+		_head = p;
 	}
 	size_t IndexOf(const T &item) const {
 		Node<T> *tmp = _head;
